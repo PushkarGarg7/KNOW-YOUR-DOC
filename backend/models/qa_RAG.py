@@ -10,7 +10,7 @@ import getpass
 # Directly use the API key
 
 if "GOOGLE_API_KEY" not in os.environ:
-    os.environ["GOOGLE_API_KEY"] = getpass.getpass("AIzaSyAQS7AkkwmTYJ8GXjbqM0PgfZ_iZS-BDG0")
+    os.environ["GOOGLE_API_KEY"] = getpass.getpass("api-key")
 
 llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
 
