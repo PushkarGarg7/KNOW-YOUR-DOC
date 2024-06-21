@@ -1,0 +1,15 @@
+flask
+pandas
+transformers
+pyPDF2
+torch
+streamlit
+langchain
+langchain-google-genai
+langchain_community
+fitz
+langchainhub
+langchain-chroma
+bs4
+langchain-text-splitters
+langchain_core
