@@ -12,7 +12,7 @@ import os
 import getpass
 
 if "GOOGLE_API_KEY" not in os.environ:
-    os.environ["GOOGLE_API_KEY"] = getpass.getpass("api-key")
+    os.environ["GOOGLE_API_KEY"] = getpass.getpass("api_key")
 
 google_llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash")
 def get_summarization_chain():
