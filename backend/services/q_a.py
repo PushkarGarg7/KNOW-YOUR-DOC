@@ -1,5 +1,3 @@
-
-
 from backend.PreProcessors.pdf_to_text import PDFToText
 from backend.PreProcessors.textToChunks import TextToChunks
 from backend.database.chroma_setup import setup_chroma_vector_db
@@ -37,6 +35,3 @@ def q_a(file_content, question, session_id):
     logging.debug(f"Session Data After Processing: {get_session_data(session_id)}")
     
     return answer
-
-
-

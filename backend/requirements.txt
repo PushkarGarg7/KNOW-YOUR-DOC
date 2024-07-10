@@ -13,3 +13,4 @@ langchain-chroma
 bs4
 langchain-text-splitters
 langchain_core
+openpyxl

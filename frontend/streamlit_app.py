@@ -17,6 +17,7 @@
 #     st.session_state.vectorstore = None
 #     st.session_state.chat_history = []
 #     st.session_state.session_id = str(uuid.uuid4())
+#     st.session_state.uploaded_file = None
 
 # def show_main_page():
 #     st.title('File Processing Application')
@@ -88,7 +89,7 @@
 #             files = {'file': uploaded_file}
 #             response = requests.post('http://localhost:5000/process_excel', files=files)
 #             if response.status_code == 200:
-#                 data = response.json().get('data')
+#                 data = response.json().get('message')
 #                 st.write('Processed Data:', data)
 #             else:
 #                 st.write("Failed to process Excel file:", response.status_code)
@@ -103,7 +104,6 @@
 #     show_pdf_page()
 # elif st.session_state.page == 'excel':
 #     show_excel_page()
-
 
 import streamlit as st
 import requests
@@ -187,14 +187,16 @@ def show_pdf_page():
 def show_excel_page():
     st.subheader('Excel Processor')
     uploaded_file = st.file_uploader("Choose an Excel file", type=["xls", "xlsx"])
-    if uploaded_file is not None:
+    query = st.text_input("Enter your query:")
+    if uploaded_file is not None and query:
         st.write("Uploaded File:", uploaded_file.name)
 
         if st.button('Process Excel'):
             files = {'file': uploaded_file}
-            response = requests.post('http://localhost:5000/process_excel', files=files)
+            data = {'query': query, 'session_id': st.session_state.session_id}
+            response = requests.post('http://localhost:5000/process_excel', files=files, data=data)
             if response.status_code == 200:
-                data = response.json().get('data')
+                data = response.json().get('message')
                 st.write('Processed Data:', data)
             else:
                 st.write("Failed to process Excel file:", response.status_code)
