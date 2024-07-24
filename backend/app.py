@@ -85,6 +85,7 @@ from io import BytesIO
 from backend.services.csv_qa import process_excel_for_qa
 from backend.services.summary_service import summarize_pdf
 from backend.database.session_db import get_session_data
+from backend.services.q_a import q_a
 
 app = Flask(__name__)
 
